@@ -68,19 +68,16 @@ def x_mas_occurs(matrix, start_coord):
         return False
 
     letters = [
-        matrix[x - 1][y - 1],
-        matrix[x + 1][y + 1],
-        matrix[x - 1][y + 1],
-        matrix[x + 1][y - 1],
+        matrix[x - 1][y - 1],  # top left
+        matrix[x + 1][y + 1],  # bottom right
+        matrix[x - 1][y + 1],  # top right
+        matrix[x + 1][y - 1],  # bottom left
     ]
 
-    if letters.count("M") != 2 or letters.count("S") != 2:
-        return False
+    if letters.count("M") == 2 and letters.count("S") == 2 and letters[0] != letters[1]:
+        return True
 
-    if letters[0] == letters[1]:
-        return False
-
-    return True
+    return False
 
 
 def solve(puzzle_input):
